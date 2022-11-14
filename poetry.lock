@@ -176,6 +176,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "pastel"
+version = "0.2.1"
+description = "Bring colors to your terminal."
+category = "dev"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[[package]]
 name = "pathspec"
 version = "0.10.2"
 description = "Utility library for gitignore style pattern matching of file paths."
@@ -202,6 +210,21 @@ python-versions = ">=3.7"
 [package.extras]
 docs = ["furo (>=2022.9.29)", "proselint (>=0.13)", "sphinx-autodoc-typehints (>=1.19.4)", "sphinx (>=5.3)"]
 test = ["appdirs (==1.4.4)", "pytest-cov (>=4)", "pytest-mock (>=3.10)", "pytest (>=7.2)"]
+
+[[package]]
+name = "poethepoet"
+version = "0.16.4"
+description = "A task runner that works well with poetry."
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+pastel = ">=0.2.1,<0.3.0"
+tomli = ">=1.2.2"
+
+[package.extras]
+poetry_plugin = ["poetry (>=1.0,<2.0)"]
 
 [[package]]
 name = "pycodestyle"
@@ -303,7 +326,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "60009085e640f9787916061bfe838502d70c5ac328ec34b69536b15b0373caaf"
+content-hash = "6049232d2991783c34fa69b105bae8d5e0ea734c6693bdaf3c00e8af9efbe875"
 
 [metadata.files]
 astroid = []
@@ -320,9 +343,11 @@ lazy-object-proxy = []
 mccabe = []
 mypy = []
 mypy-extensions = []
+pastel = []
 pathspec = []
 pbr = []
 platformdirs = []
+poethepoet = []
 pycodestyle = []
 pyflakes = []
 pylint = []
