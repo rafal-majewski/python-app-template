@@ -20,3 +20,14 @@ poethepoet = "^0.16.4"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poe.tasks]
+isort-fix = { shell = "isort ./" }
+isort-check = { shell = "isort --check-only ./" }
+black-fix = { shell = "black ./" }
+black-check = { shell = "black --check ./" }
+flake8-check = { shell = "flake8 ./" }
+mypy-check = { shell = "mypy ./" }
+pylint-check = { shell = "pylint --recursive=y ./" }
+bandit-check = { shell = "bandit -r ./" }
+unittest-check = { shell = "python -m unittest discover" }
