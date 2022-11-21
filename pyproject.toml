@@ -33,3 +33,5 @@ mypy-check = { shell = "mypy ./" }
 pylint-check = { shell = "pylint --recursive=y ./" }
 bandit-check = { shell = "bandit -r ./" }
 unittest-check = { shell = "python -m unittest discover" }
+formatting-check = { sequence = ["isort-check", "black-check"] }
+formatting-fix = { sequence = ["isort-fix", "black-fix"] }
