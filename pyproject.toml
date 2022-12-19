@@ -36,3 +36,4 @@ unittest-check = { shell = "python -m unittest discover" }
 formatting-check = { sequence = ["isort-check", "black-check"] }
 formatting-fix = { sequence = ["isort-fix", "black-fix"] }
 linting-check = { sequence = ["flake8-check", "mypy-check", "pylint-check"] }
+start = { shell = "python -m python_app_template" }
