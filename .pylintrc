@@ -1,2 +1,2 @@
 [MESSAGES CONTROL]
-disable = missing-function-docstring, use-list-literal, too-many-ancestors, missing-class-docstring, too-many-nested-blocks, consider-using-enumerate, missing-module-docstring, too-many-locals, protected-access, invalid-name, too-few-public-methods, consider-using-dict-items, duplicate-code, use-dict-literal, consider-iterating-dictionary
+disable = missing-function-docstring, relative-beyond-top-level, use-list-literal, too-many-ancestors, missing-class-docstring, too-many-nested-blocks, consider-using-enumerate, missing-module-docstring, too-many-locals, protected-access, invalid-name, too-few-public-methods, consider-using-dict-items, duplicate-code, use-dict-literal, consider-iterating-dictionary
