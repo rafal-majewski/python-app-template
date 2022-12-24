@@ -3,13 +3,13 @@ import pydantic
 
 class AppConfig(pydantic.BaseSettings):
     # required_setting: int
-    optional_setting: int = 123
+    OPTIONAL_SETTING: int = 123
 
 
 def main() -> None:
     print("Hello World!")
     app_config = AppConfig(_env_file=".env")
-    print(app_config.optional_setting)
+    print(app_config.OPTIONAL_SETTING)
 
 
 if __name__ == "__main__":
