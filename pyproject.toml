@@ -18,6 +18,7 @@ flake8 = "^5.0.4"
 pylint = "^2.15.5"
 bandit = "^1.7.4"
 poethepoet = "^0.16.4"
+coverage = "^7.0.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -32,7 +33,7 @@ flake8-check = { shell = "flake8 ./" }
 mypy-check = { shell = "mypy ./" }
 pylint-check = { shell = "pylint --recursive=y ./" }
 bandit-check = { shell = "bandit -r ./" }
-unittest-check = { shell = "python -m unittest discover" }
+unittest-check = { shell = "python -m coverage run -m unittest discover && python -m coverage report -m && python -m coverage html" }
 formatting-check = { sequence = ["isort-check", "black-check"] }
 formatting-fix = { sequence = ["isort-fix", "black-fix"] }
 linting-check = { sequence = ["flake8-check", "mypy-check", "pylint-check"] }
