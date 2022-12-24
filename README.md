@@ -14,7 +14,6 @@ The following following tools have been configured:
 - [poethepoet](https://github.com/nat-n/poethepoet) for running the above tools
 - [unittest](https://docs.python.org/3/library/unittest.html) for unit testing
 
-
 ## Usage
 
 The project uses [poetry](https://python-poetry.org), you can install it with:
@@ -51,7 +50,6 @@ poetry run poe linting-check
 ```
 
 Note: The linter will return a non-zero exit code if there are any linting errors or warnings.
-
 
 ### Run the formatter
 
