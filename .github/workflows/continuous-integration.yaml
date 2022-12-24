@@ -4,6 +4,9 @@ on:
   push:
   pull_request:
 
+env:
+  SETUP_PYTHON_PYTHON_VERSION: '3.10'
+
 jobs:
   isort-check:
     name: isort check
@@ -11,15 +14,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Install poetry
+        run: pipx install poetry
       - name: Install Python
         uses: actions/setup-python@v4
+        id: setup-python
         with:
-          python-version: '3.10'
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
+          python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
+          cache: 'poetry'
       - name: Install dependencies
+        if: steps.setup-python.outputs.cache-hit != 'true'
         run: |
-          poetry install
+          poetry install --no-interaction
       - name: Run isort
         run: |
           poetry run poe isort-check
@@ -29,15 +35,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Install python
+      - name: Install poetry
+        run: pipx install poetry
+      - name: Install Python
         uses: actions/setup-python@v4
+        id: setup-python
         with:
-          python-version: '3.10'
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
+          python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
+          cache: 'poetry'
       - name: Install dependencies
+        if: steps.setup-python.outputs.cache-hit != 'true'
         run: |
-          poetry install
+          poetry install --no-interaction
       - name: Run black
         run: |
           poetry run poe black-check
@@ -47,15 +56,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Install poetry
+        run: pipx install poetry
       - name: Install Python
         uses: actions/setup-python@v4
+        id: setup-python
         with:
-          python-version: '3.10'
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
+          python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
+          cache: 'poetry'
       - name: Install dependencies
+        if: steps.setup-python.outputs.cache-hit != 'true'
         run: |
-          poetry install
+          poetry install --no-interaction
       - name: Run flake8
         run: |
           poetry run poe flake8-check
@@ -65,15 +77,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Install poetry
+        run: pipx install poetry
       - name: Install Python
         uses: actions/setup-python@v4
+        id: setup-python
         with:
-          python-version: '3.10'
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
+          python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
+          cache: 'poetry'
       - name: Install dependencies
+        if: steps.setup-python.outputs.cache-hit != 'true'
         run: |
-          poetry install
+          poetry install --no-interaction
       - name: Run mypy
         run: |
           poetry run poe mypy-check
@@ -83,15 +98,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Install poetry
+        run: pipx install poetry
       - name: Install Python
         uses: actions/setup-python@v4
+        id: setup-python
         with:
-          python-version: '3.10'
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
+          python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
+          cache: 'poetry'
       - name: Install dependencies
+        if: steps.setup-python.outputs.cache-hit != 'true'
         run: |
-          poetry install
+          poetry install --no-interaction
       - name: Run pylint
         run: |
           poetry run poe pylint-check
@@ -101,15 +119,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Install poetry
+        run: pipx install poetry
       - name: Install Python
         uses: actions/setup-python@v4
+        id: setup-python
         with:
-          python-version: '3.10'
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
+          python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
+          cache: 'poetry'
       - name: Install dependencies
+        if: steps.setup-python.outputs.cache-hit != 'true'
         run: |
-          poetry install
+          poetry install --no-interaction
       - name: Run bandit
         run: |
           poetry run poe bandit-check
@@ -119,15 +140,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Install poetry
+        run: pipx install poetry
       - name: Install Python
         uses: actions/setup-python@v4
+        id: setup-python
         with:
-          python-version: '3.10'
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
+          python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
+          cache: 'poetry'
       - name: Install dependencies
+        if: steps.setup-python.outputs.cache-hit != 'true'
         run: |
-          poetry install
+          poetry install --no-interaction
       - name: Run unittest
         run: |
           poetry run poe unittest-check
