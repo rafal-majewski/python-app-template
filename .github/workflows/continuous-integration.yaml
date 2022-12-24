@@ -23,7 +23,6 @@ jobs:
           python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
           cache: 'poetry'
       - name: Install dependencies
-        if: steps.setup-python.outputs.cache-hit != 'true'
         run: |
           poetry install --no-interaction
       - name: Run isort
@@ -44,7 +43,6 @@ jobs:
           python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
           cache: 'poetry'
       - name: Install dependencies
-        if: steps.setup-python.outputs.cache-hit != 'true'
         run: |
           poetry install --no-interaction
       - name: Run black
@@ -65,7 +63,6 @@ jobs:
           python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
           cache: 'poetry'
       - name: Install dependencies
-        if: steps.setup-python.outputs.cache-hit != 'true'
         run: |
           poetry install --no-interaction
       - name: Run flake8
@@ -86,7 +83,6 @@ jobs:
           python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
           cache: 'poetry'
       - name: Install dependencies
-        if: steps.setup-python.outputs.cache-hit != 'true'
         run: |
           poetry install --no-interaction
       - name: Run mypy
@@ -107,7 +103,6 @@ jobs:
           python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
           cache: 'poetry'
       - name: Install dependencies
-        if: steps.setup-python.outputs.cache-hit != 'true'
         run: |
           poetry install --no-interaction
       - name: Run pylint
@@ -128,7 +123,6 @@ jobs:
           python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
           cache: 'poetry'
       - name: Install dependencies
-        if: steps.setup-python.outputs.cache-hit != 'true'
         run: |
           poetry install --no-interaction
       - name: Run bandit
@@ -149,7 +143,6 @@ jobs:
           python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
           cache: 'poetry'
       - name: Install dependencies
-        if: steps.setup-python.outputs.cache-hit != 'true'
         run: |
           poetry install --no-interaction
       - name: Run unittest
