@@ -7,12 +7,12 @@ The following following tools have been configured:
 - [poetry](https://python-poetry.org) for dependency management
 - [black](https://github.com/psf/black) for code formatting
 - [mypy](http://mypy-lang.org) for static type checking
-- [isort](https://github.com/PyCQA/isort) for sorting imports
+- [isort](https://github.com/PyCQA/isort) for auto-sorting imports
 - [flake8](https://flake8.pycqa.org) for linting
 - [pylint](https://www.pylint.org) for linting
 - [bandit](https://github.com/PyCQA/bandit) for security linting
-- [poethepoet](https://github.com/nat-n/poethepoet) for running the above tools
 - [unittest](https://docs.python.org/3/library/unittest.html) for unit testing
+- [poethepoet](https://github.com/nat-n/poethepoet) for running the other tools
 
 ## Usage
 
