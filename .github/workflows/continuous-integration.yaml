@@ -4,6 +4,9 @@ on:
   push:
   pull_request:
 
+env:
+  SETUP_PYTHON_PYTHON_VERSION: '3.10'
+
 jobs:
   isort-check:
     name: isort check
@@ -11,165 +14,150 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Install poetry
+        run: pipx install poetry
       - name: Install Python
         uses: actions/setup-python@v4
+        id: setup-python
         with:
-          python-version: '3.10'
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-      - name: Load cached venv
-        id: cached-poetry-dependencies
-        uses: actions/cache@v3
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+          python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
+          cache: 'poetry'
       - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction
+        if: steps.setup-python.outputs.cache-hit != 'true'
+        run: |
+          poetry install --no-interaction
       - name: Run isort
         run: |
           poetry run poe isort-check
   black-check:
     name: black check
     runs-on: ubuntu-latest
+    needs: [isort-check]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Install python
+      - name: Install poetry
+        run: pipx install poetry
+      - name: Install Python
         uses: actions/setup-python@v4
+        id: setup-python
         with:
-          python-version: '3.10'
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-      - name: Load cached venv
-        id: cached-poetry-dependencies
-        uses: actions/cache@v3
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+          python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
+          cache: 'poetry'
       - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction
+        if: steps.setup-python.outputs.cache-hit != 'true'
+        run: |
+          poetry install --no-interaction
       - name: Run black
         run: |
           poetry run poe black-check
   flake8-check:
     name: flake8 check
     runs-on: ubuntu-latest
+    needs: [black-check]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Install poetry
+        run: pipx install poetry
       - name: Install Python
         uses: actions/setup-python@v4
+        id: setup-python
         with:
-          python-version: '3.10'
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-      - name: Load cached venv
-        id: cached-poetry-dependencies
-        uses: actions/cache@v3
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+          python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
+          cache: 'poetry'
       - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction
+        if: steps.setup-python.outputs.cache-hit != 'true'
+        run: |
+          poetry install --no-interaction
       - name: Run flake8
         run: |
           poetry run poe flake8-check
   mypy-check:
     name: mypy check
     runs-on: ubuntu-latest
+    needs: [flake8-check]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Install poetry
+        run: pipx install poetry
       - name: Install Python
         uses: actions/setup-python@v4
+        id: setup-python
         with:
-          python-version: '3.10'
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-      - name: Load cached venv
-        id: cached-poetry-dependencies
-        uses: actions/cache@v3
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+          python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
+          cache: 'poetry'
       - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction
+        if: steps.setup-python.outputs.cache-hit != 'true'
+        run: |
+          poetry install --no-interaction
       - name: Run mypy
         run: |
           poetry run poe mypy-check
   pylint-check:
     name: pylint check
     runs-on: ubuntu-latest
+    needs: [mypy-check]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Install poetry
+        run: pipx install poetry
       - name: Install Python
         uses: actions/setup-python@v4
+        id: setup-python
         with:
-          python-version: '3.10'
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-      - name: Load cached venv
-        id: cached-poetry-dependencies
-        uses: actions/cache@v3
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+          python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
+          cache: 'poetry'
       - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction
+        if: steps.setup-python.outputs.cache-hit != 'true'
+        run: |
+          poetry install --no-interaction
       - name: Run pylint
         run: |
           poetry run poe pylint-check
   bandit-check:
     name: bandit check
     runs-on: ubuntu-latest
+    needs: [pylint-check]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Install poetry
+        run: pipx install poetry
       - name: Install Python
         uses: actions/setup-python@v4
+        id: setup-python
         with:
-          python-version: '3.10'
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-      - name: Load cached venv
-        id: cached-poetry-dependencies
-        uses: actions/cache@v3
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+          python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
+          cache: 'poetry'
       - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction
+        if: steps.setup-python.outputs.cache-hit != 'true'
+        run: |
+          poetry install --no-interaction
       - name: Run bandit
         run: |
           poetry run poe bandit-check
   unittest-check:
     name: unittest check
     runs-on: ubuntu-latest
+    needs: [bandit-check]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Install poetry
+        run: pipx install poetry
       - name: Install Python
         uses: actions/setup-python@v4
+        id: setup-python
         with:
-          python-version: '3.10'
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-      - name: Load cached venv
-        id: cached-poetry-dependencies
-        uses: actions/cache@v3
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+          python-version: ${{ env.SETUP_PYTHON_PYTHON_VERSION }}
+          cache: 'poetry'
       - name: Install dependencies
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction
+        if: steps.setup-python.outputs.cache-hit != 'true'
+        run: |
+          poetry install --no-interaction
       - name: Run unittest
         run: |
           poetry run poe unittest-check
