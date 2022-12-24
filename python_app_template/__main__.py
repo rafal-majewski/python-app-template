@@ -2,7 +2,9 @@ import pydantic
 
 
 class AppConfig(pydantic.BaseSettings):
-    # required_setting: int
+    # Uncomment this to get a required setting:
+    # REQUIRED_SETTING: int
+
     OPTIONAL_SETTING: int = 123
 
 
