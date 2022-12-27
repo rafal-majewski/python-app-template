@@ -224,7 +224,7 @@ test = ["appdirs (==1.4.4)", "pytest (>=7.2)", "pytest-cov (>=4)", "pytest-mock 
 
 [[package]]
 name = "poethepoet"
-version = "0.17.0"
+version = "0.17.1"
 description = "A task runner that works well with poetry."
 category = "dev"
 optional = false
@@ -366,7 +366,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "0eaa3b04d4e52e2df4cbb78647fdedf17aac97052d9567c7df1b5b3b18b11a2b"
+content-hash = "c1d83218283e6cb301ee8997d4f935877d271f73ec9449d6c2d00e0db95ac702"
 
 [metadata.files]
 astroid = [
@@ -550,8 +550,8 @@ platformdirs = [
     {file = "platformdirs-2.5.4.tar.gz", hash = "sha256:1006647646d80f16130f052404c6b901e80ee4ed6bef6792e1f238a8969106f7"},
 ]
 poethepoet = [
-    {file = "poethepoet-0.17.0-py3-none-any.whl", hash = "sha256:08f57f41d6d22d2bcea61f7eeb3c02b8dbb89ce8d704a8b0b37ceb27909cb3c6"},
-    {file = "poethepoet-0.17.0.tar.gz", hash = "sha256:b5425c34daa4128cb09062315b2bd2e7f8bfa3b6397259c5b9ab9deb886427d0"},
+    {file = "poethepoet-0.17.1-py3-none-any.whl", hash = "sha256:e54213659f3f2c6ed71fbfbe865ca14d095bb945c82a839df4df5e7811f5653d"},
+    {file = "poethepoet-0.17.1.tar.gz", hash = "sha256:0429990ab4faa92d96cd7b7d66e9cf5bb5598adbe0ee9af8482f9d10e28a6290"},
 ]
 pycodestyle = [
     {file = "pycodestyle-2.10.0-py2.py3-none-any.whl", hash = "sha256:8a4eaf0d0495c7395bdab3589ac2db602797d76207242c17d470186815706610"},
