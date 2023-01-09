@@ -18,7 +18,7 @@ flake8 = "^6.0.0"
 pylint = "^2.15.9"
 bandit = "^1.7.4"
 poethepoet = "^0.17.1"
-coverage = "^7.0.1"
+coverage = "^7.0.4"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
