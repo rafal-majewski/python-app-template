@@ -17,7 +17,7 @@ isort = "^5.11.4"
 flake8 = "^6.0.0"
 pylint = "^2.15.9"
 bandit = "^1.7.4"
-poethepoet = "^0.17.1"
+poethepoet = "^0.18.0"
 coverage = "^7.0.1"
 
 [build-system]
